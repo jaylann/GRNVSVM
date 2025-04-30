@@ -16,6 +16,7 @@ A tiny helper script that wakes up your personal TUM GRNVS VM and logs you in vi
    
 - **A POSIX shell** (`bash`, `zsh`, etc.) – no fancy dependencies required.
 
+- **SSH setup for grnvs.net** and properly setup config 
 ---
 
 ## 🔧 Installation

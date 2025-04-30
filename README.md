@@ -35,8 +35,11 @@ rm -rf /tmp/grnvsvm
 
 This command will:
 	1.	Clone the repo to /tmp/grnvsvm
+
 	2.	Copy the script as grnvsvm into /usr/local/bin
+
 	3.	Make it executable
+
 	4.	Remove the temporary clone
 
 > **Why `/usr/local/bin`?**  

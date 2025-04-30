@@ -9,11 +9,31 @@ SSH_OPTS="-o StrictHostKeyChecking=accept-new -o LogLevel=ERROR"
 SSH_CONTROL_OPTS="-T"                                   # <-- disable PTY on controller SSH
 # ── /CONFIGURE ME ──────────────────────────────────────────────────────────────
 
+###############################################################################
+#  🎨  MODERN HEADER / WATERMARK                                               #
+###############################################################################
+print_header() {
+  # Basic colour palette (falls back to white if the terminal only supports 8)
+  local bold reset cyan magenta
+  bold=$(tput bold)             # bold on            :contentReference[oaicite:0]{index=0}
+  reset=$(tput sgr0)            # reset all attrs    :contentReference[oaicite:1]{index=1}
+  cyan=$(tput setaf 6 2>/dev/null || echo "")        # bright-cyan
+  magenta=$(tput setaf 5 2>/dev/null || echo "")     # bright-magenta
+
+  printf "\n${bold}${cyan}╔═══════════════════════════════════════════════════════╗\n"
+  printf "║                   ${magenta}GRNVS VM CONNECTOR${cyan}                  ║\n"
+  printf "║           Made with ❤️ by Justin Lanfermann           ║\n"
+  printf "╚═══════════════════════════════════════════════════════╝${reset}\n\n"
+}
+print_header   # ⭐ run header immediately on start-up
+
 # ── SPINNER SETUP ──────────────────────────────────────────────────────────────
+# Unicode “braille” spinner frames – compact and smooth on most fonts
+# Idea borrowed from common CLI spinners 🄫 (e.g. Figlet/TOIlet banners) :contentReference[oaicite:2]{index=2}
 spinner_frames=( '⠋' '⠙' '⠹' '⠸' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏' )
 spin() {
   local msg="$1" i=0
-  tput civis
+  tput civis                                  # hide cursor
   while :; do
     printf "\r%s %s" "${spinner_frames[i]}" "$msg"
     i=$(( (i+1) % ${#spinner_frames[@]} ))
@@ -24,10 +44,10 @@ spin() {
 cleanup() {
   if [[ -n "${sp_pid-}" ]]; then
     kill "$sp_pid" 2>/dev/null || true
-    wait  "$sp_pid" 2>/dev/null || true
+    wait "$sp_pid" 2>/dev/null || true
     printf "\r\033[K"
   fi
-  tput cnorm
+  tput cnorm                                  # show cursor again
 }
 trap cleanup EXIT
 # ── /SPINNER SETUP ─────────────────────────────────────────────────────────────
@@ -38,8 +58,7 @@ spin "Contacting controller…" & sp_pid=$!
 # Talk to the controller (no PTY, so it never blocks on “PTY allocation failed”)
 response="$(ssh $SSH_OPTS $SSH_CONTROL_OPTS "$CONTROL" 2>&1 || true)"
 
-# Spinner will be killed by our EXIT trap when we leave this block
-cleanup
+cleanup   # stop first spinner
 
 # Extract the hostname, e.g. svm1234.net.in.tum.de
 vm_host="$(grep -Eo 'root@[^[:space:]]+' <<<"$response" \

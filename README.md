@@ -25,7 +25,7 @@ Choose one of the methods below to make `grnvsvm` available everywhere:
 ### 1. Copy to `/usr/local/bin` (system-wide)
 
 ```bash
-sudo cp grnvs-connect.sh /usr/local/bin/grnvsvm
+sudo cp grnvsvm.sh /usr/local/bin/grnvsvm
 sudo chmod 755 /usr/local/bin/grnvsvm
 ```
 

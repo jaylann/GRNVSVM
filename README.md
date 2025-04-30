@@ -1,6 +1,6 @@
 # grnvsvm 🎉
 
-A tiny helper script that wakes up your personal TUM GRNVS VM and logs you in via SSH—no copy-pasting hostnames or accepting host-keys every time. Once installed, just run `grnvsvm` from **any** directory on macOS or Linux, and enjoy a slick spinner while your VM boots.
+A tiny helper script that wakes up your personal TUM GRNVS VM and logs you in via SSH—no copy-pasting hostnames or accepting host-keys every time. Once installed, just run `grnvsvm` from **any** directory on macOS or Linux to connect to your vm.
 
 ---
 

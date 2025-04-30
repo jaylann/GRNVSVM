@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # grnvs-connect.sh – start or wake the GRNVS VM and ssh straight in
-# Now with a cool spinner + proper cleanup so you never get TERM 143 again!
 
 set -euo pipefail
 

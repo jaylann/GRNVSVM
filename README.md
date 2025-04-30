@@ -20,14 +20,24 @@ A tiny helper script that wakes up your personal TUM GRNVS VM and logs you in vi
 
 ## 🔧 Installation
 
-Choose one of the methods below to make `grnvsvm` available everywhere:
+Make `grnvsvm` available everywhere by choosing one of the methods below:
 
-### 1. Copy to `/usr/local/bin` (system-wide)
+### System-wide (one-liner)
+
+Clone, install, and clean up in one go:
 
 ```bash
-sudo cp grnvsvm.sh /usr/local/bin/grnvsvm
-sudo chmod 755 /usr/local/bin/grnvsvm
+git clone https://github.com/jaylann/GRNVSVM.git /tmp/grnvsvm && \
+sudo cp /tmp/grnvsvm/grnvsvm.sh /usr/local/bin/grnvsvm && \
+sudo chmod 755 /usr/local/bin/grnvsvm && \
+rm -rf /tmp/grnvsvm
 ```
+
+This command will:
+	1.	Clone the repo to /tmp/grnvsvm
+	2.	Copy the script as grnvsvm into /usr/local/bin
+	3.	Make it executable
+	4.	Remove the temporary clone
 
 > **Why `/usr/local/bin`?**  
 > It’s reserved for admin-installed tools, safe from OS updates, and always early in the shell’s search path.

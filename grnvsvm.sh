@@ -3,20 +3,17 @@
 
 set -euo pipefail
 
-# ── CONFIGURE ME ───────────────────────────────────────────────────────────────
+
 CONTROL="svm@grnvs.net"                                 # GRNVS controller account
 SSH_OPTS="-o StrictHostKeyChecking=accept-new -o LogLevel=ERROR"
 SSH_CONTROL_OPTS="-T"                                   # <-- disable PTY on controller SSH
-# ── /CONFIGURE ME ──────────────────────────────────────────────────────────────
 
-###############################################################################
-#  🎨  MODERN HEADER / WATERMARK                                               #
-###############################################################################
+
 print_header() {
   # Basic colour palette (falls back to white if the terminal only supports 8)
   local bold reset cyan magenta
-  bold=$(tput bold)             # bold on            :contentReference[oaicite:0]{index=0}
-  reset=$(tput sgr0)            # reset all attrs    :contentReference[oaicite:1]{index=1}
+  bold=$(tput bold)             # bold on          
+  reset=$(tput sgr0)            # reset all attrs
   cyan=$(tput setaf 6 2>/dev/null || echo "")        # bright-cyan
   magenta=$(tput setaf 5 2>/dev/null || echo "")     # bright-magenta
 
@@ -25,11 +22,10 @@ print_header() {
   printf "║           Made with ❤️ by Justin Lanfermann           ║\n"
   printf "╚═══════════════════════════════════════════════════════╝${reset}\n\n"
 }
-print_header   # ⭐ run header immediately on start-up
+print_header   # run header immediately on start-up
 
 # ── SPINNER SETUP ──────────────────────────────────────────────────────────────
-# Unicode “braille” spinner frames – compact and smooth on most fonts
-# Idea borrowed from common CLI spinners 🄫 (e.g. Figlet/TOIlet banners) :contentReference[oaicite:2]{index=2}
+# Unicode “braille” spinner frames
 spinner_frames=( '⠋' '⠙' '⠹' '⠸' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏' )
 spin() {
   local msg="$1" i=0

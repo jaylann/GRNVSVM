@@ -19,7 +19,7 @@ print_header() {
 
   printf "\n${bold}${cyan}╔═══════════════════════════════════════════════════════╗\n"
   printf "║                   ${magenta}GRNVS VM CONNECTOR${cyan}                  ║\n"
-  printf "║           Made with ❤️ by Justin Lanfermann           ║\n"
+  printf "║           Made with ❤️  by Justin Lanfermann           ║\n"
   printf "╚═══════════════════════════════════════════════════════╝${reset}\n\n"
 }
 print_header   # run header immediately on start-up

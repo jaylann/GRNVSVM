@@ -126,5 +126,6 @@ grnvsvm
   ```
 
 ---
-
-Made with ❤️ by Justin Lanfermann. Happy hacking!
+<p align="center">
+  Made with ❤️ by <a href="https://lanfermann.dev">Justin Lanfermann</a>
+</p>
